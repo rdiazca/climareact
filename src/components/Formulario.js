@@ -36,7 +36,7 @@ function Formulario({datosConsulta}) {
         />
         <label htmlFor="ciudad">Ciudad: </label>
       </div>
-      <div className="input-filed col s12">
+      <div className="input-field col s12">
           <select onChange={handleChange} name="pais">
               <option value="">Selecciona un país</option>
               <option value="US">Estados Unidos</option>
