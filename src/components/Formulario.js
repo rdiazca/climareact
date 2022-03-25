@@ -46,6 +46,7 @@ function Formulario({datosConsulta}) {
               <option value="CR">Costa Rica</option>
               <option value="ES">España</option>
               <option value="PE">Perú</option>
+              <option value="CU">Cuba</option>
           </select>
       </div>
       <div className="input-field col s12">
