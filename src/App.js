@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Formulario from "./components/Formulario";
 import Error from "./components/Error";
@@ -10,6 +10,29 @@ function App() {
   const [ ciudad, guardarCiudad ] = useState('');
   const [ pais, guardarPais ] = useState('');
   const [ error, guardarError ] = useState(false);
+  const [ resultado, guardarResultado ] = useState({});
+
+  useEffect(() => {
+
+    //prevenir ejecución
+    if(ciudad === '') return;
+
+    const consultarAPI = async () => {
+
+      const appId = '18de4ee1de3c4b517e2fa44cb037713b';
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${ciudad},${pais}&appid=${appId}`;
+  
+     //consultar la url
+     const respuesta = await fetch(url);
+     const resultado = await respuesta.json();
+  
+     guardarResultado(resultado);
+  
+  
+    }
+
+    consultarAPI();
+  }, [ ciudad, pais ]);
 
 
   const datosConsulta = datos => {
@@ -26,6 +49,7 @@ function App() {
     guardarError(false);
   }
 
+ 
   //Cargar un componente condicionalmente
   let componente;
   if(error){
